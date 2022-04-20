@@ -18,6 +18,23 @@ def save_nparray2image(arr, fpath):
     im.save(fpath)
 
 
+def A(x, mask):
+    return x * mask
+
+def AAdj(x, mask):
+    return A(x, mask)  # adjoint is the same
+
+def fPsi(x, level=4, wavelet='db4'):
+    return pywt.wavedec2(x, level=level, wavelet=wavelet)
+
+def fPsiAdj(coeffs, wavelet):
+    return pywt.waverec2(coeffs, wavelet=wavelet)
+
+
+def wavelet_transform2d(data, level=4, wavelet='db4'):
+    images = pywt.wavedec2(data, wavelet=wavelet, level=level)
+
+
 def main(args):
     img_arr = imagepath2numpy(args.image_pth)
     mask = scipy.io.loadmat(args.mask_pth)['mask']
