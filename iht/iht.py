@@ -13,6 +13,10 @@ def imagepath2numpy(im_pth):
     arr = np.array(img)
     return arr
 
+def save_nparray2image(arr, fpath):
+    im = Image.fromarray(arr)
+    im.save(fpath)
+
 
 def main(args):
     img_arr = imagepath2numpy(args.image_pth)
@@ -20,6 +24,11 @@ def main(args):
 
     # resize to args.resolution
     img_resize = cv2.resize(img_arr, (args.resolution, args.resolution), interpolation=cv2.INTER_CUBIC)
+    assert(mask.shape == img_resize.shape)
+
+    # save_nparray2image(img_resize, "test.png")
+    corrupted_img = mask * img_resize
+    # save_nparray2image(corrupted_img, 'test.png')
 
 
 def parse_arg():
