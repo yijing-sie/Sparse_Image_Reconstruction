@@ -62,7 +62,7 @@ def main(args):
 
     # initialize and run IHT
     x_init = np.random.rand(*corrupted_img.shape) * 255
-    xhat = iht(y=corrupted_img, x_init=x_init, sparsity=args.sparsity, mask=mask_resize, level=4, wavelet='db4')
+    xhat = iht(y=corrupted_img, x_init=x_init, sparsity=args.sparsity, mask=mask_resize, level=4, wavelet='db4', iters=args.iters)
 
     # save reconstructed image, original processed image, corrupted image
     if not os.path.exists(args.out_dir):
@@ -72,6 +72,9 @@ def main(args):
     recon_img_path = os.path.join(args.out_dir, img_name + "_recon.jpg")
     orig_process_img_path = os.path.join(args.out_dir, img_name + ".jpg")
     corrupted_img_path = os.path.join(args.out_dir, img_name + "_corrupted.jpg")
+
+    mse = calc_mse(normalize01(img_resize), normalize01(xhat))
+    print(f"MEAN SQUARED ERROR: {mse}")
 
     save_nparray2image(xhat, recon_img_path)
     save_nparray2image(corrupted_img, corrupted_img_path)
@@ -88,6 +91,7 @@ def parse_arg():
     parser.add_argument('--resolution', type=int, default=512, help="resolution of images to be resized to")
     parser.add_argument('--sparsity', type=float, default=0.1, help='percentage of how sparse the signal in wavelet domain will be for IHT')
     parser.add_argument('--out_dir', type=str, default='output', help="output directory path to save reconstructed image. Directory will be created if it doesn't exist")
+    parser.add_argument('--iters', type=int, default=1000, help="number of iterations to run algorithm")
     return parser.parse_args()
 
 if __name__ == '__main__':
