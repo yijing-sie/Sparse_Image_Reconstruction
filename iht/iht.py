@@ -6,6 +6,7 @@ import numpy as np
 import pywt
 import scipy.io
 import cv2
+import matplotlib.pyplot as plt
 from iht.utils import *
 
 
@@ -81,6 +82,39 @@ def main(args):
     save_nparray2image(img_resize, orig_process_img_path)
 
 
+def sparsity_vs_mse(args):
+    img_arr = imagepath2numpy(args.image_pth)
+    mask = scipy.io.loadmat(args.mask_pth)['mask']
+
+    # resize to args.resolution
+    img_resize = cv2.resize(img_arr, (args.resolution, args.resolution), interpolation=cv2.INTER_CUBIC)
+    mask_resize = mask[:args.resolution, :args.resolution]
+    assert(mask_resize.shape == img_resize.shape)
+
+    corrupted_img = mask_resize * img_resize
+
+    sparsities = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+    mses = []
+
+    # initialize and run IHT
+    x_init = np.random.rand(*corrupted_img.shape) * 255
+
+    for sparsity in sparsities:
+        xhat = iht(y=corrupted_img, x_init=x_init, sparsity=sparsity, mask=mask_resize, level=4, wavelet='db4', iters=args.iters)
+        mse = calc_mse(normalize01(img_resize), normalize01(xhat))
+        mses.append(mse)
+
+    print(mses)
+
+    plt.plot(sparsities, mses)
+    plt.title("Mean Squared Error Reconstruction vs Sparsity Level")
+    plt.xlabel("Sparsity (%)")
+    plt.ylabel("MSE")
+    plt.xticks(sparsities)
+    plt.savefig(os.path.join(args.out_dir, "mse_vs_sparsity.png"))
+    plt.close()
+
+
 def parse_arg():
     """Creates a parser for command-line arguments.
     """
@@ -97,3 +131,4 @@ def parse_arg():
 if __name__ == '__main__':
     args = parse_arg()
     main(args)
+    # sparsity_vs_mse(args)
