@@ -36,14 +36,6 @@ def A(x, mask):
 
 def AAdj(x, mask):
     return A(x, mask)  
-
-
-def calc_mse(arr1, arr2):
-    assert(arr1.shape == arr2.shape)
-    sub = arr1 - arr2
-    squared = np.square(sub)
-    mse = np.sum(squared) / squared.size
-    return mse
           
 def project(z, tau):
     return np.sign(z)*(0.5*np.abs(z) + 0.5*np.sqrt(np.abs(z)**2  - tau**2))
@@ -96,7 +88,5 @@ for idx,img in enumerate(corr_img):
     
     img.save(f"recon_{idx+1}.jpg")
     # img.show()
-    mse = calc_mse(normalize(img), normalize(recov_img))
-    print(f" MSE for {idx+1}.jpg = {mse}\n")
-
-
+    mse = mean_squared_error(normalize(img), normalize(recov_img))
+    print(f" For {idx+1}.jpg, MSE from sklearn = {mse}\n")
