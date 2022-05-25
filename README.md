@@ -4,6 +4,15 @@ In imaging problems, an original image of interest can be corrupted by noisy mea
 
 We explore sparse image reconstruction where we assume the observed image is sparse under the wavelet domain and we seek to recover this sparse representation. Specifically, given an image corrupted by an unknown mask creating random regions of blank pixels, we aim to recover the original image utilizing optimization techniques. This task can be compared to compressed sensing techniques which aim to recover a sparse vector $ x \text{*} $ from $ m < n $ measurements. We assume some prior properties of the measurement mask and compare a few algorithms to observe the image reconstruction quality.
 
-### Methods
+## Methods
 
 We consider three methods for optimizing sparse image reconstruction: Soft Thresholding, Hard Thresholding, and Reciprocal Thresholding. Refer to the official [Report](/report.pdf) for detailed formulation as well as qualitative/quantitative results.
+
+## Sample Outputs
+
+Shown below are a few reconstructed outputs. Further examples can be found in the same report.
+
+<p float="left">
+  <img src="/gray/gray_1.jpg" width="100" />
+  <img src="/corrupted/corrupted_1.jpg" width="100" /> 
+</p>
