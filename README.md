@@ -12,7 +12,9 @@ We consider three methods for optimizing sparse image reconstruction: Soft Thres
 
 Shown below are a few reconstructed outputs. Further examples can be found in the same report.
 
+**Original (left). Corrupted (right)**
+
 <p float="left">
-  <img src="/gray/gray_1.jpg" width="100" />
-  <img src="/corrupted/corrupted_1.jpg" width="100" /> 
+  <img src="/gray/gray_1.jpg" width="400" />
+  <img src="/corrupted/corrupted_1.jpg" width="400" /> 
 </p>
