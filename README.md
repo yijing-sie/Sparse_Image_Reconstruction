@@ -18,3 +18,11 @@ Shown below are a few reconstructed outputs. Further examples can be found in th
   <img src="/gray/gray_1.jpg" width="400" />
   <img src="/corrupted/corrupted_1.jpg" width="400" /> 
 </p>
+
+**Soft Thresholding (left). Hard Thresholding (middle). Reciprocal Thresholding (right)**
+
+<p float="left">
+  <img src="/ist/output/rimg1.jpg" width="250" />
+  <img src="/iht/output/test1_recon.jpg" width="250" /> 
+  <img src="/irt/recon_1.jpg" width="250" /> 
+</p>
