@@ -30,14 +30,14 @@ Here is the report for our project : [Sparse Image Reconstruction](https://githu
 ---
 Each image is corrupted by [mask.mat](https://github.com/yijing-sie/Sparse_Image_Reconstruction/blob/master/mask.mat). More results can be found in our [report](https://github.com/yijing-sie/Sparse_Image_Reconstruction/blob/master/report.pdf) 
 
-### Original (left) v.s. Corrupted (right)
+**Original (left) v.s. Corrupted (right)**
 
 <p float="left">
   <img src="/gray/gray_1.jpg" width="400" />
   <img src="/corrupted/corrupted_1.jpg" width="400" /> 
 </p>
 
-### Iterative Soft Thresholding (IST left) v.s. Iterative Hard Thresholding (IHT middle) v.s. Reciprocal Thresholding (right)
+**Iterative Soft Thresholding (IST left) v.s. Iterative Hard Thresholding (IHT middle) v.s. Reciprocal Thresholding (right)**
 
 <p float="left">
   <img src="/ist/output/rimg1.jpg" width="250" />
