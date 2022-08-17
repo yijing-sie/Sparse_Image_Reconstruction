@@ -5,6 +5,8 @@ This is a group project of three students for the course  **Optimization**
 * In this project, we explore sparse image reconstruction where we assume the observed gray image is sparse under some
 domain, and the goal is to recover the original image as closely as possible via three iterative thresholding approaches: **Soft Thresholding**, **Hard Thresholding**, and **Reciprocal Thresholding**
  
+* Each of us is responsoble for one of the methods, and I am responsible for the implementation of **[Reciprocal Thresholding](https://arxiv.org/pdf/1804.08841)**
+ 
 * The sparse optimization problem is defined as follows:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\min\limits_{x\in\mathbb{R}^d} f(x)$
@@ -17,7 +19,7 @@ constraint $||x||_0 \leq s$ requires that at most $s$ many number entries of the
 > $f(x) : \mathbb{R}^d\to\mathbb{R}$ is a differentiable loss function
 
 
-* Each of us is responsoble for one of the methods, and I am responsible for the implementation of **[Reciprocal Thresholding](https://arxiv.org/pdf/1804.08841)**
+
 
 * Specifically, we combined Wavelet Transform with iterative thresholding algorithms for better performance
 
