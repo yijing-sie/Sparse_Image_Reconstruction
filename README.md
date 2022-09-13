@@ -5,7 +5,7 @@ This is a group project of three students for the course  **Optimization**
 * In this project, we explore sparse image reconstruction where we assume the observed gray image is sparse under some
 domain, and the goal is to recover the original image as closely as possible via three iterative thresholding approaches: **Soft Thresholding**, **Hard Thresholding**, and **Reciprocal Thresholding**
  
-* Each of us is responsoble for one of the methods, and I am responsible for the implementation of **[Reciprocal Thresholding](https://arxiv.org/pdf/1804.08841)**
+* Each of us is responsible  for one of the methods, and I am responsible for the implementation of **[Reciprocal Thresholding](https://arxiv.org/pdf/1804.08841)**
  
 * The sparse optimization problem is defined as follows:
 
